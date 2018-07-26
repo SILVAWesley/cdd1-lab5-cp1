@@ -1,0 +1,63 @@
+---
+title: "report1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+library(tidyverse)
+library(here)
+
+data = read_csv(here("dados/speed-dating.csv"));
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introdução
+
+Neste documento analisaremos os dados de 4918 speed datings envolvendo 310 pessoas dos Estados Unidos. Esses dados foram capturados por professores da Columbia Business School. Os speed datings duravam 4 minutos e, ao final, os participantes recebiam uma ficha para avaliar o seu par. As variáveis que puderam ser obtidas do formulário são:
+
+- iid : id do participante p1 no encontro
+- gender : sexo do p1, 0 = mulher
+- order : dos vários encontros realizados em uma noite, esse foi o n-ésimo, segundo essa variável
+- pid : id do participante p2
+- int_corr : correlação entre os interesses de p1 e p2
+- samerace : p1 e p2 são da mesma raça?
+- age_o : idade de p2
+- age : idade de p1
+- field : campo de estudo de p1
+- race : raça de p1. O código é Black/African American=1; European/Caucasian-American=2; Latino/Hispanic American=3; Asian/Pacific Islander/Asian-American=4;	Native American=5; Other=6
+- from : de onde p1 é
+- career : que carreira p1 quer seguir
+- sports, tvsports, exercise, dining, museums, art, hiking, gaming, clubbing, reading, tv, theater, movies, concerts, music, shopping, yoga : De 1 a 10, quão interessado p1 é em cada uma dessas atividades.
+- attr : quão atraente p1 achou p2
+- sinc : quão sincero p1 achou p2
+- intel : quão inteligente p1 achou p2
+- fun : quão divertido p1 achou p2
+- amb : quão ambicioso p1 achou p2
+- shar : quanto p1 achou que compartilha interesses e hobbies com p2
+- like : no geral, quanto p1 gostou de p2?
+- prob : que probabiliade p1 acha que p2 tem de querer se encontrar novamente com p- (escala 1-10)
+- attr3_s : quanto p1 acha que é atraente
+- sinc3_s : quanto p1 acha que é sincero
+- intel3_s : quanto p1 acha que é inteligente
+- fun3_s : quanto p1 acha que é divertido
+- amb3_s : quanto p1 acha que é ambicioso
+
+Além dos dados originais, que são apresentados acima, iremos incluir mais um:
+- age_diff: diferença de idade entre p1 e p2.
+
+Usaremos esses dados e técnicas de regressão para responder a seguinte pergunta: As variáveis abaixo apresentam relação com o quanto uma pessoa gostou da outra (coluna 'like')?
+
+Variáveis escolhidas:
+
+1) gender
+2) order
+3) int_corr
+4) samerace
+5) age_diff
+6) from
+7) attr3_s
+8) intel3_s
+9) fun3_s
+10) amb3_s
